@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="ศูนย์รวมห้องเรียนออนไลน์ สำหรับนักเรียน ปวส.2 สาขาเทคโนโลยีธุรกิจดิจิทัล">
+  <title>Digital Business Classroom | ปวส.2</title>
+  <style>
+    :root {
+      --red: #e63946;
+      --red-dark: #c92535;
+      --navy: #142b4a;
+      --blue: #246bfd;
+      --sky: #eaf5ff;
+      --ink: #18263b;
+      --muted: #6b7890;
+      --line: #e5ebf3;
+      --surface: #ffffff;
+      --page: #f6f9fd;
+      --shadow: 0 14px 36px rgba(20, 43, 74, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: "Noto Sans Thai", "Leelawadee UI", Tahoma, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .topbar {
+      background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      max-width: 1120px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark {
+      width: 44px; height: 44px; flex: 0 0 44px;
+      display: grid; place-items: center;
+      color: white; font-weight: 900; font-size: 18px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--red), #ff6b72);
+      box-shadow: 0 7px 16px rgba(230,57,70,.22);
+    }
+    .brand-name { font-weight: 800; color: var(--navy); line-height: 1.25; }
+    .brand-sub { color: var(--muted); font-size: 12px; margin-top: 3px; }
+    .nav-tag {
+      font-size: 12px; font-weight: 700; color: var(--blue);
+      background: var(--sky); border-radius: 999px; padding: 7px 12px;
+      white-space: nowrap;
+    }
+    main { max-width: 1120px; margin: auto; padding: 28px 24px 56px; }
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(115deg, #142b4a 0%, #1c4777 65%, #2475c8 100%);
+      border-radius: 28px; padding: 44px;
+      color: white; box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 300px; height: 300px;
+      border: 48px solid rgba(255,255,255,.07); border-radius: 50%;
+      right: -80px; top: -130px; pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: #d6eaff; font-size: 13px; font-weight: 700;
+      letter-spacing: .2px; margin-bottom: 12px;
+    }
+    .eyebrow-dot { width: 8px; height: 8px; background: #ff6b72; border-radius: 50%; }
+    h1 { margin: 0; max-width: 650px; font-size: clamp(30px, 5vw, 46px); line-height: 1.22; letter-spacing: -.7px; }
+    .hero p { max-width: 610px; margin: 16px 0 0; color: #e0edff; font-size: 16px; }
+    .hero-bottom { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+    .hero-chip {
+      padding: 8px 12px; border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.09); border-radius: 10px;
+      font-size: 13px; color: #fff;
+    }
+    .section-head {
+      display: flex; align-items: end; justify-content: space-between;
+      gap: 16px; margin: 34px 0 18px;
+    }
+    .section-kicker { color: var(--red); font-size: 12px; font-weight: 800; letter-spacing: 1px; }
+    h2 { margin: 4px 0 0; color: var(--navy); font-size: 25px; line-height: 1.35; }
+    .section-desc { color: var(--muted); margin: 6px 0 0; font-size: 14px; }
+    .search-wrap { position: relative; width: min(280px, 100%); }
+    .search-wrap span { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: #8090a8; }
+    .search {
+      width: 100%; border: 1px solid var(--line); outline: none;
+      border-radius: 12px; background: white; padding: 11px 14px 11px 38px;
+      font: inherit; font-size: 13px; transition: border .2s, box-shadow .2s;
+    }
+    .search:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(36,107,253,.1); }
+    .course-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .course-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: 20px; padding: 24px; box-shadow: 0 5px 18px rgba(20,43,74,.035);
+      display: flex; flex-direction: column; min-height: 230px;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .course-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #c9dcf6; }
+    .course-top { display: flex; justify-content: space-between; align-items: start; gap: 14px; }
+    .course-icon {
+      width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center;
+      background: var(--icon-bg, #eaf5ff); color: var(--icon-color, #246bfd);
+      font-size: 23px; flex: 0 0 48px;
+    }
+    .course-number {
+      color: var(--muted); font-size: 11px; font-weight: 800;
+      border: 1px solid var(--line); padding: 5px 8px; border-radius: 8px;
+    }
+    .course-card h3 { color: var(--navy); margin: 18px 0 6px; font-size: 18px; line-height: 1.45; }
+    .course-card p { color: var(--muted); margin: 0; font-size: 13px; }
+    .course-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 20px; }
+    .platform { color: #8591a4; font-size: 12px; }
+    .open-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: white; background: var(--blue); text-decoration: none;
+      font-size: 13px; font-weight: 800; padding: 10px 14px;
+      border-radius: 11px; transition: background .2s;
+    }
+    .open-link:hover { background: #1554d6; }
+    .open-link svg { width: 15px; height: 15px; }
+    .notice {
+      margin-top: 24px; border: 1px solid #d7e9fb; background: #eff7ff;
+      border-radius: 16px; padding: 17px 20px; display: flex; gap: 12px; align-items: start;
+    }
+    .notice-icon { font-size: 20px; }
+    .notice strong { display: block; color: var(--navy); font-size: 14px; }
+    .notice p { margin: 3px 0 0; color: #5d718b; font-size: 13px; }
+    .empty { display: none; text-align: center; padding: 32px; color: var(--muted); background: white; border: 1px dashed var(--line); border-radius: 16px; }
+    footer { border-top: 1px solid var(--line); background: white; }
+    .footer-inner {
+      max-width: 1120px; margin: auto; padding: 20px 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+      color: var(--muted); font-size: 12px;
+    }
+    .footer-inner strong { color: var(--navy); }
+    @media (max-width: 700px) {
+      .nav { padding: 13px 16px; }
+      main { padding: 18px 16px 38px; }
+      .hero { padding: 30px 23px; border-radius: 22px; }
+      .hero p { font-size: 14px; }
+      .section-head { align-items: stretch; flex-direction: column; }
+      .search-wrap { width: 100%; }
+      .course-grid { grid-template-columns: 1fr; gap: 13px; }
+      .course-card { padding: 20px; min-height: 215px; }
+      .nav-tag { display: none; }
+      .footer-inner { padding: 18px 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="เมนูหลัก">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">DB</div>
+        <div>
+          <div class="brand-name">DIGITAL BUSINESS</div>
+          <div class="brand-sub">ศูนย์รวมห้องเรียนออนไลน์ แผนกวิชาเทคโนโลยีธุรกิจดิจิทัล วิทยาลัยการอาชีพนครนายก</div>
+        </div>
+      </div>
+      <div class="nav-tag">ปวส.2 · ภาคเรียนที่ 2</div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> ONLINE CLASSROOM HUB</div>
+      <h1>ห้องเรียนออนไลน์<br>ภาคเรียนที่ 2 ปีการศึกษา 2569</h1>
+      <p>ศูนย์รวมรายวิชาสำหรับนักเรียนระดับ ปวส.2 แผนกวิชาเทคโนโลยีธุรกิจดิจิทัล วิทยาลัยการอาชีพนครนายก</p>
+      <div class="hero-bottom">
+        <span class="hero-chip">📚 รวม 4 รายวิชา</span>
+        <span class="hero-chip">💻 เรียนออนไลน์</span>
+        <span class="hero-chip">📍 สำหรับนักเรียนฝึกงาน</span>
+      </div>
+    </section>
+
+    <section aria-labelledby="courses-heading">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">YOUR CLASSROOM</div>
+          <h2 id="courses-heading">ห้องเรียนของฉัน</h2>
+          <p class="section-desc">เลือกรายวิชาเพื่อเปิด Padlet ของแต่ละห้องเรียน</p>
+        </div>
+        <label class="search-wrap">
+          <span aria-hidden="true">⌕</span>
+          <input class="search" id="courseSearch" type="search" placeholder="ค้นหารายวิชา..." aria-label="ค้นหารายวิชา">
+        </label>
+      </div>
+
+      <div class="course-grid" id="courseGrid">
+        <!-- แก้ชื่อรายวิชา คำอธิบาย และลิงก์ Padlet ได้ในแต่ละการ์ด -->
+        <article class="course-card" data-search="รายวิชาที่ 1 ชื่อรายวิชา">
+          <div class="course-top">
+            <div class="course-icon" style="--icon-bg:#fff0f1;--icon-color:#e63946" aria-hidden="true">✦</div>
+            <span class="course-number">COURSE 01</span>
+          </div>
+          <h3>การวัดและประเมินผล</h3>
+          <p>ข้อปฏิบัติการวัดผลและประเมินผลรายวิชาในสถานประกอบการ (สัดส่วนคะแนน ๕๐ : ๕๐)
+๑๐๐ คะแนน</p>
+          <div class="course-footer">
+            <span class="platform">PADLET CLASSROOM</span>
+            <a class="open-link" href="https://padlet.com/krutar2564/breakout-room/Bk5x4dLGZBaw4Zgz-Y8RAzJnn6YwwzxV9" target="_blank" rel="noopener noreferrer">
+              เข้าห้องเรียน
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="course-card" data-search="รายวิชาที่ 2 ชื่อรายวิชา">
+          <div class="course-top">
+            <div class="course-icon" style="--icon-bg:#eaf5ff;--icon-color:#246bfd" aria-hidden="true">▦</div>
+            <span class="course-number">COURSE 02</span>
+          </div>
+          <h3>31910 - 2009 ธุรกิจดิจิทัลผ่านสื่อสังคมออนไลน์</h3>
+          <p>สธท.2/1,สธท.2/2 ม.6</p>
+          <div class="course-footer">
+            <span class="platform">PADLET CLASSROOM</span>
+            <a class="open-link" href="https://padlet.com/krutar2564/breakout-room/QgJV4Z6mdN914mBk-Y8RAzJnn6YwwzxV9" target="_blank" rel="noopener noreferrer">
+              เข้าห้องเรียน
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="course-card" data-search="รายวิชาที่ 3 ชื่อรายวิชา">
+          <div class="course-top">
+            <div class="course-icon" style="--icon-bg:#edf9f5;--icon-color:#16856b" aria-hidden="true">◈</div>
+            <span class="course-number">COURSE 03</span>
+          </div>
+          <h3>31910 - 2029 โครงงานด้านเทคโนโลยีธุรกิจดิจิทัล</h3>
+          <p>สธท.2/1,สธท.2/2 ม.6</p>
+          <div class="course-footer">
+            <span class="platform">PADLET CLASSROOM</span>
+            <a class="open-link" href="https://padlet.com/krutar2564/breakout-room/E1Xd49k8W67aqGJr-Y8RAzJnn6YwwzxV9" target="_blank" rel="noopener noreferrer">
+              เข้าห้องเรียน
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="course-card" data-search="รายวิชาที่ 4 ชื่อรายวิชา">
+          <div class="course-top">
+            <div class="course-icon" style="--icon-bg:#f0edff;--icon-color:#7057d9" aria-hidden="true">◎</div>
+            <span class="course-number">COURSE 04</span>
+          </div>
+          <h3>31910 - 2010 สื่อสร้างสรรค์ธุรกิจดิจิทัล</h3>
+          <p>สธท.2/1,สธท.2/2 ม.6</p>
+          <div class="course-footer">
+            <span class="platform">PADLET CLASSROOM</span>
+            <a class="open-link" href="https://padlet.com/krutar2564/breakout-room/mWng4lApEo5Y2zdJ-Y8RAzJnn6YwwzxV9" target="_blank" rel="noopener noreferrer">
+              เข้าห้องเรียน
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+      <div class="empty" id="emptyMessage">ไม่พบรายวิชาที่ค้นหา ลองพิมพ์คำค้นใหม่อีกครั้ง</div>
+
+      <aside class="notice">
+        <div class="notice-icon" aria-hidden="true">💡</div>
+        <div>
+          <strong>แจ้งเตือนสำหรับนักเรียน</strong>
+          <p>ตรวจสอบประกาศ งานที่มอบหมาย และกำหนดส่งงานใน Padlet ของแต่ละรายวิชาอย่างสม่ำเสมอ หากมีข้อสงสัยให้ติดต่อครูที่ปรึกษา</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span><strong>Digital Business Classroom</strong> · NVEC</span>
+      <span>แผนกวิชาเทคโนโลยีธุรกิจดิจิทัล</span>
+    </div>
+  </footer>
+
+  <script>
+    // ช่องค้นหาจะกรองการ์ดรายวิชาโดยอัตโนมัติ
+    const searchInput = document.getElementById('courseSearch');
+    const courseCards = Array.from(document.querySelectorAll('.course-card'));
+    const emptyMessage = document.getElementById('emptyMessage');
+
+    searchInput.addEventListener('input', function () {
+      const keyword = this.value.trim().toLocaleLowerCase('th');
+      let visibleCount = 0;
+
+      courseCards.forEach(function (card) {
+        const text = (card.innerText + ' ' + card.dataset.search).toLocaleLowerCase('th');
+        const matched = text.includes(keyword);
+        card.style.display = matched ? 'flex' : 'none';
+        if (matched) visibleCount++;
+      });
+
+      emptyMessage.style.display = visibleCount ? 'none' : 'block';
+    });
+  </script>
+</body>
+</html>
